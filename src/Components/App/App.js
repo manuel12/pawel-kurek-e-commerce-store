@@ -63,14 +63,14 @@ class App extends Component {
 
     } else {
 
-        const orderedProduct = {
-          product: product,
-          selectedAttributes: productAttributes,
-          quantity: 1,
-          uuid: crypto.randomUUID(),
-        };
-          
-        this.props.setCartElements([...this.props.cartElements, orderedProduct]);
+      const orderedProduct = {
+        product: product,
+        selectedAttributes: productAttributes,
+        quantity: 1,
+        uuid: crypto.randomUUID(),
+      };
+        
+      this.props.setCartElements([...this.props.cartElements, orderedProduct]);
     }
 
   }

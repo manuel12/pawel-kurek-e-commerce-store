@@ -55,6 +55,8 @@ class Main extends Component {
     }
 
     render(){
+        
+        console.log(this.props)
 
         const totalCartCost = this.props.cartElements.map(cartEl => {
 
@@ -132,7 +134,6 @@ class Main extends Component {
                                     path={`/cart`}
                                     element={
                                         <Cart
-                                            changeAttrValue={this.changeAttrValue}
                                             totalCartCost={totalCartCost}
                                         />
                                     }

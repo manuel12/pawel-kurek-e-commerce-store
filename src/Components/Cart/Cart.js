@@ -8,7 +8,6 @@ class Cart extends Component {
 
     constructor(props){
         super(props)
-        this.updateElementInCart = this.props.updateElementInCart;
         this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
         this.eraseZeroQuantityCartElements = this.eraseZeroQuantityCartElements.bind(this);
     }
@@ -41,11 +40,12 @@ class Cart extends Component {
         this.props.setCartElements(updatedCartElements);
     }
 
-    eraseZeroQuantityCartElements(cartElements){
+    eraseZeroQuantityCartElements = (cartElements) => {
         return cartElements.filter(cartEl => cartEl.quantity > 0)
     }
     
     render(){
+
         return (
             <section className="cart">
                 <h2 className="cart__header">CART</h2>
@@ -82,11 +82,9 @@ const mapDispatchToProps = {
   
 const mapStateToProps = (state) => {
 
-const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
 const cartElements = state.rootReducer.cartElements;
 
 return {
-    currentCurrencySymbol,
     cartElements
 }
 }
