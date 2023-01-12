@@ -3,8 +3,6 @@ import Main from '../../Layouts/Main/Main';
 import Header from '../../Layouts/Header/Header';
 import './App.scss';
 import querySingleProduct from '../../queries/querySingleProduct';
-import getFromLocalStorage from '../../helpers/getFromLocalStorage';
-import saveToLocalStorage from '../../helpers/saveToLocalStorage';
 import getDefaultProductAttributes from '../../helpers/getDefaultProductAttributes';
 import { connect } from 'react-redux';
 import allActions from '../../actions';
@@ -13,48 +11,11 @@ class App extends Component {
 
   constructor(){
     super()
-
     this.addProductToCart = this.addProductToCart.bind(this);
-    this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
-    this.eraseZeroQuantityCartElements = this.eraseZeroQuantityCartElements.bind(this);
-  }
-
-  eraseZeroQuantityCartElements(cartElements){
-
-    const hasZeroQuantityCartElements = cartElements.find(cartEl => cartEl.quantity < 1);
-
-    if (hasZeroQuantityCartElements) {
-
-      const filteredCartElements = cartElements.filter(cartEl => cartEl.quantity > 0)
-
-      this.setState({cartElements: filteredCartElements})
-    }
-  }
-
-  updateProductCartQuantity = (product, quantity) => {
-
-    const cartElements = this.props.cartElements;
-    const productToUpdate = JSON.stringify(product);
-
-    // Update quantity of particular product and delete if from cart if it's quantity is 0
-    let updatedCartElements = cartElements.map(element => {
-
-      if (JSON.stringify(element) === productToUpdate) {
-        element.quantity = quantity;
-      }
-
-      return element;
-
-    });
-
-    this.props.setCartElements(updatedCartElements);
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
 
-    console.log(productId, selectedAttributes)
-
-    debugger
     const product = await querySingleProduct(productId);
 
     const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
@@ -114,34 +75,6 @@ class App extends Component {
 
   }
 
-  componentDidMount(){
-    this.eraseZeroQuantityCartElements(this.props.cartElements);
-    saveToLocalStorage("state", {
-      ...getFromLocalStorage("state") || 
-      {
-        isCartOverlayVisible: false,
-        isCurrenciesListOpen: false,
-        currentCurrencySymbol: "$",
-        cartElements: [],
-        selectedCategory: "all"
-      }
-    })
-  }
-
-  componentDidUpdate(){
-    this.eraseZeroQuantityCartElements(this.props.cartElements);
-    saveToLocalStorage("state", {
-      ...getFromLocalStorage("state") || 
-      {
-        isCartOverlayVisible: false,
-        isCurrenciesListOpen: false,
-        currentCurrencySymbol: "$",
-        cartElements: [],
-        selectedCategory: "all"
-      }
-    })
-  }
-
   render(){
     return (
       <div className="app">
@@ -149,7 +82,6 @@ class App extends Component {
         <Header/>
 
         <Main 
-          updateProductCartQuantity={this.updateProductCartQuantity}
           addProductToCart={this.addProductToCart}
         />
 

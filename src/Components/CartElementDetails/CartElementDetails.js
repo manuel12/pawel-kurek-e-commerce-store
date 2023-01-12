@@ -9,8 +9,6 @@ class CartElementDetails extends Component {
     
     render(){
 
-        console.log(this.props.product)
-
         const {id, name, attributes, prices, brand} = this.props.product;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)

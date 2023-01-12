@@ -13,6 +13,7 @@ class CartElement extends Component {
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
         this.handleQuantityDecrease = this.handleQuantityDecrease.bind(this);
+        
     }
 
     handleQuantityIncrease(){
@@ -27,7 +28,7 @@ class CartElement extends Component {
 
         return (
             <div className="cart-element">
-                <CartElementDetails 
+                <CartElementDetails
                     product={this.props.product}
                     selectedAttributes={this.props.selectedAttributes}
                     cartElementParams={this.props.cartElementParams}
@@ -35,8 +36,7 @@ class CartElement extends Component {
                 <CartProductQuantity
                     handleQuantityIncrease={this.handleQuantityIncrease}
                     handleQuantityDecrease={this.handleQuantityDecrease}
-                    cartElementParams={this.props.cartElementParams}
-                    updateProductCartQuantity={this.updateProductCartQuantity}
+                    quantity={this.props.cartElementParams.quantity}
                 />
 
                 <CartProductPhotos
@@ -52,13 +52,13 @@ const mapDispatchToProps = {
     setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
   }
   
-  const mapStateToProps = (state) => {
-    
-    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
-    
+const mapStateToProps = (state) => {
+
+const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+
     return {
         currentCurrencySymbol,
     }
-  }
+}
   
 export default connect(mapStateToProps, mapDispatchToProps)(CartElement);

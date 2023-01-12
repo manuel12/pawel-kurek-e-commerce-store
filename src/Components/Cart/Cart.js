@@ -8,8 +8,41 @@ class Cart extends Component {
 
     constructor(props){
         super(props)
-        this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.updateElementInCart = this.props.updateElementInCart;
+        this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
+        this.eraseZeroQuantityCartElements = this.eraseZeroQuantityCartElements.bind(this);
+    }
+
+    updateProductCartQuantity = (cartProduct, quantity) => {
+
+        const productToUpdate = JSON.stringify(cartProduct);
+        const cartElementsCopy = JSON.parse(JSON.stringify(this.props.cartElements));
+    
+        // Update quantity of particular product and delete if from cart if it's quantity is 0
+        let updatedCartElements = []
+
+        cartElementsCopy.forEach(cartEl => {
+        
+          if (JSON.stringify(cartEl) === productToUpdate) {
+            cartEl.quantity = quantity;
+
+            if (cartEl.quantity > 0) {
+                updatedCartElements.push(cartEl)
+            }
+
+          } else {
+            updatedCartElements.push(cartEl)
+          }
+    
+        });
+
+        updatedCartElements = this.eraseZeroQuantityCartElements(updatedCartElements);
+
+        this.props.setCartElements(updatedCartElements);
+    }
+
+    eraseZeroQuantityCartElements(cartElements){
+        return cartElements.filter(cartEl => cartEl.quantity > 0)
     }
     
     render(){
@@ -44,7 +77,7 @@ class Cart extends Component {
 }
 
 const mapDispatchToProps = {
-    setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
+    setCartElements: allActions.cartElementsActions.setCartElements,
   }
   
 const mapStateToProps = (state) => {
