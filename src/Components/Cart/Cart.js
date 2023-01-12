@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import allActions from "../../actions";
 import CartElement from "../CartElement/CartElement";
 import "./Cart.scss";
 
@@ -23,7 +25,6 @@ class Cart extends Component {
                                 <React.Fragment key={"cart__element" + index}>
                                     <CartElement
                                         updateProductCartQuantity={this.updateProductCartQuantity}
-                                        currentCurrencySymbol={this.props.currentCurrencySymbol}
                                         cartElementParams={cartElement}
                                         product={cartElement.product}
                                         selectedAttributes={cartElement.selectedAttributes}
@@ -42,4 +43,19 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+const mapDispatchToProps = {
+    setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
+  }
+  
+  const mapStateToProps = (state) => {
+    
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+    const cartElements = state.rootReducer.cartElements;
+    
+    return {
+        currentCurrencySymbol,
+        cartElements
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

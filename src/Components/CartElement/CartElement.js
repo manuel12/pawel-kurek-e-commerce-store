@@ -1,4 +1,6 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+import allActions from "../../actions";
 import CartElementDetails from "../CartElementDetails/CartElementDetails";
 import CartProductPhotos from "../CartProductPhotos/CartProductPhotos";
 import CartProductQuantity from "../CartProductQuantity/CartProductQuantity";
@@ -28,7 +30,6 @@ class CartElement extends Component {
                 <CartElementDetails 
                     product={this.props.product}
                     selectedAttributes={this.props.selectedAttributes}
-                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                     cartElementParams={this.props.cartElementParams}
                 />
                 <CartProductQuantity
@@ -47,4 +48,17 @@ class CartElement extends Component {
     }
 }
 
-export default CartElement;
+const mapDispatchToProps = {
+    setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
+  }
+  
+  const mapStateToProps = (state) => {
+    
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+    
+    return {
+        currentCurrencySymbol,
+    }
+  }
+  
+export default connect(mapStateToProps, mapDispatchToProps)(CartElement);

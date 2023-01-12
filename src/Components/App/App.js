@@ -51,6 +51,10 @@ class App extends Component {
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
+
+    console.log(productId, selectedAttributes)
+
+    debugger
     const product = await querySingleProduct(productId);
 
     const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
@@ -105,7 +109,7 @@ class App extends Component {
           uuid: crypto.randomUUID(),
         };
           
-        this.props.setCartElements([this.props.cartElements, orderedProduct]);
+        this.props.setCartElements([...this.props.cartElements, orderedProduct]);
     }
 
   }
