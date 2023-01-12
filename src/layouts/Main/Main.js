@@ -57,8 +57,6 @@ class Main extends Component {
 
     render(){
 
-        console.log(this.props)
-
         const totalCartCost = this.props.cartElements.map(cartEl => {
 
             const unitCost = cartEl.product.prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol).amount;

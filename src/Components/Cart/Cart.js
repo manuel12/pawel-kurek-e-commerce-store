@@ -47,15 +47,15 @@ const mapDispatchToProps = {
     setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
   }
   
-  const mapStateToProps = (state) => {
-    
-    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
-    const cartElements = state.rootReducer.cartElements;
-    
-    return {
-        currentCurrencySymbol,
-        cartElements
-    }
-  }
+const mapStateToProps = (state) => {
+
+const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+const cartElements = state.rootReducer.cartElements;
+
+return {
+    currentCurrencySymbol,
+    cartElements
+}
+}
   
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

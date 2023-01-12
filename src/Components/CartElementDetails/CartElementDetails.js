@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import Price from '../Price/Price';
 import ProductAllAttributes from '../ProductAllAttributes/ProductAllAttributes';
 import ProductHeader from '../ProductHeader/ProductHeader';
@@ -7,6 +8,8 @@ import './CartElementDetails.scss';
 class CartElementDetails extends Component {
     
     render(){
+
+        console.log(this.props.product)
 
         const {id, name, attributes, prices, brand} = this.props.product;
 
@@ -37,4 +40,12 @@ class CartElementDetails extends Component {
     }
 }
 
-export default CartElementDetails;
+const mapStateToProps = (state) => {
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+
+    return {
+        currentCurrencySymbol
+    }
+}
+
+export default connect(mapStateToProps, null)(CartElementDetails);
