@@ -6,6 +6,7 @@ import ProductHeader from "../ProductHeader/ProductHeader";
 import ParsedHtml from "../ParsedHtml/ParsedHtml";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import getDefaultProductAttributes from "../../helpers/getDefaultProductAttributes";
+import { connect } from "react-redux";
 
 class ProductDetails extends Component {
 
@@ -86,4 +87,13 @@ class ProductDetails extends Component {
     }
 }
 
-export default ProductDetails;
+const mapStateToProps = (state) => {
+    
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+
+    return {
+        currentCurrencySymbol
+    }
+}
+
+export default connect(mapStateToProps, null)(ProductDetails);

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import CartProductPhotos from "../CartProductPhotos/CartProductPhotos";
 import CartProductQuantity from "../CartProductQuantity/CartProductQuantity";
 import MiniCartElementDetails from "../MiniCartElementDetails/MiniCartElementDetails";
@@ -33,7 +34,6 @@ class MiniCartElement extends Component {
                     product={this.props.product}
                     changeAttrValue={this.changeAttrValue}
                     selectedAttributes={this.props.selectedAttributes}
-                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                     cartElementParams={this.props.cartElementParams}
                     size={this.size}
                 />
@@ -55,4 +55,15 @@ class MiniCartElement extends Component {
     }
 }
 
-export default MiniCartElement;
+
+  
+const mapStateToProps = (state) => {
+
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+
+    return {
+        currentCurrencySymbol,
+    }
+}
+  
+export default connect(mapStateToProps, null)(MiniCartElement);

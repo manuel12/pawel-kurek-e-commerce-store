@@ -50,7 +50,6 @@ class MiniCart extends Component {
                 }
 
                 <MiniCartTotalCost
-                    currentCurrencySymbol={this.props.currentCurrencySymbol}
                     totalCartCost={this.props.totalCartCost}
                 />
 
@@ -76,7 +75,7 @@ class MiniCart extends Component {
 }
 
 const mapDispatchToProps = {
-    setCartElements: allActions.cartOverlayActions.toggleCartOverlay,
+    toggleCartOverlay: allActions.cartOverlayActions.toggleCartOverlay,
   }
   
   const mapStateToProps = (state) => {

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import './MiniCartTotalCost.scss';
 
 class MiniCartTotalCost extends Component {
@@ -20,4 +21,14 @@ class MiniCartTotalCost extends Component {
     }
 }
 
-export default MiniCartTotalCost;
+
+const mapStateToProps = (state) => {
+    
+const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+
+    return {
+        currentCurrencySymbol,
+    }
+}
+  
+export default connect(mapStateToProps, null)(MiniCartTotalCost);

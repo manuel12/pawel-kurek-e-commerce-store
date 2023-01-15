@@ -3,6 +3,7 @@ import "./ProductPage.scss";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductPhotos from "../ProductPhotos/ProductPhotos";
 import querySingleProduct from "../../queries/querySingleProduct";
+import { connect } from "react-redux";
 
 class ProductPage extends Component {
 
@@ -31,7 +32,6 @@ class ProductPage extends Component {
                         <ProductPhotos productPhotos={productDetails.gallery}/>
                         <ProductDetails 
                             productDetails={productDetails}
-                            currentCurrencySymbol={this.props.currentCurrencySymbol}
                             addProductToCart={this.addProductToCart}
                         />
                     </>

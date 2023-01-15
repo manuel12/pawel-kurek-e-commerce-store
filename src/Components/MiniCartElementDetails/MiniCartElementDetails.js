@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import Price from '../Price/Price';
 import ProductAllAttributes from '../ProductAllAttributes/ProductAllAttributes';
 import ProductHeader from '../ProductHeader/ProductHeader';
@@ -46,4 +47,15 @@ class MiniCartElementDetails extends Component {
     }
 }
 
-export default MiniCartElementDetails;
+
+  
+  const mapStateToProps = (state) => {
+    
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
+    
+    return {
+        currentCurrencySymbol,
+    }
+  }
+  
+export default connect(mapStateToProps, null)(MiniCartElementDetails);
