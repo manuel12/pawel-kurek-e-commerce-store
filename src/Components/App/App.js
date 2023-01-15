@@ -6,6 +6,7 @@ import querySingleProduct from '../../queries/querySingleProduct';
 import getDefaultProductAttributes from '../../helpers/getDefaultProductAttributes';
 import { connect } from 'react-redux';
 import allActions from '../../actions';
+import { copyObject } from '../../helpers/copyObject';
 
 class App extends Component {
 
@@ -15,6 +16,8 @@ class App extends Component {
   }
 
   addProductToCart = async (productId, selectedAttributes) => {
+
+    console.log(productId, selectedAttributes)
 
     const product = await querySingleProduct(productId);
 
@@ -27,24 +30,28 @@ class App extends Component {
       const updatedCartElements = [];
 
       this.props.cartElements.forEach(element => {
+
+        const elementCopy = copyObject(element);
   
         // Check if that type of product exists in cart by comparing ID's
         if (element.product.id === product.id) {
 
           const newProductAttributesStates = JSON.stringify(productAttributes);
-          const cartElementAttributesStates = JSON.stringify(element.selectedAttributes);
+          const cartElementAttributesStates = JSON.stringify(elementCopy.selectedAttributes);
           
           // If product exists and has the same attributes, increment it's quantity
           if (newProductAttributesStates === cartElementAttributesStates) {
             
-            element.quantity += 1;
+            elementCopy.quantity += 1;
             isExistingProductQuantityUpdated = true;
+
           }
-          
+        
         }
 
-        updatedCartElements.push(element);
+        updatedCartElements.push(elementCopy);
       })
+
 
       // If we don't update existing product order quantity, add new product to cart 
       if (!isExistingProductQuantityUpdated) {
@@ -53,21 +60,19 @@ class App extends Component {
           product: product,
           selectedAttributes: productAttributes,
           quantity: 1,
-          uuid: crypto.randomUUID(),
         };
 
         updatedCartElements.push(orderedProduct);
       }
-      
-      this.props.setCartElements(updatedCartElements);
 
+      this.props.setCartElements(updatedCartElements);
+      
     } else {
 
       const orderedProduct = {
         product: product,
         selectedAttributes: productAttributes,
-        quantity: 1,
-        uuid: crypto.randomUUID(),
+        quantity: 1
       };
         
       this.props.setCartElements([...this.props.cartElements, orderedProduct]);
@@ -91,7 +96,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  setCartElements: allActions.cartElementsActions.setCartElements,
+  setCartElements: allActions.cartElementsActions.setCartElements
 }
 
 const mapStateToProps = (state) => {

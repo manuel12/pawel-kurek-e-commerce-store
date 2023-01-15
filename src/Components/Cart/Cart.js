@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import allActions from "../../actions";
+import { copyObject } from "../../helpers/copyObject";
 import CartElement from "../CartElement/CartElement";
 import "./Cart.scss";
 
@@ -15,7 +16,7 @@ class Cart extends Component {
     updateProductCartQuantity = (cartProduct, quantity) => {
 
         const productToUpdate = JSON.stringify(cartProduct);
-        const cartElementsCopy = JSON.parse(JSON.stringify(this.props.cartElements));
+        const cartElementsCopy = copyObject(this.props.cartElements);
     
         // Update quantity of particular product and delete if from cart if it's quantity is 0
         let updatedCartElements = []

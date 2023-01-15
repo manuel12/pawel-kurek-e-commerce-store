@@ -18,8 +18,11 @@ if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").i
 const cartOverlay = (state = initState, action) => {
     switch(action.type) {
         case "TOGGLE_CART_OVERLAY":
-            saveToLocalStorage("state", !state, "isCartOverlayVisible")
-            return !state;
+            
+            const newState = !state;
+            saveToLocalStorage("state", newState, "isCartOverlayVisible");
+
+            return newState;
         default:
             return state;
     }
