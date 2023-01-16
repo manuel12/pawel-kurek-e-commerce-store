@@ -6,7 +6,6 @@ class CartProductPhotos extends Component {
 
     constructor(props){
         super(props)
-        this.productPhotos = this.props.productPhotos;
         this.handleActivePhotoIndexDecrement = this.handleActivePhotoIndexDecrement.bind(this);
         this.handleActivePhotoIndexIncrement = this.handleActivePhotoIndexIncrement.bind(this);
         
@@ -18,20 +17,10 @@ class CartProductPhotos extends Component {
         this.state = {
             activePhotoIndex: 0,
         }
-
-        this.productPhotosArray = this.productPhotos.map((photo, index) => (
-            <div className="cart-product-photos__photo-container">
-                <img 
-                    src={photo} 
-                    alt="product" 
-                    key={"cart-product-photo" + index}
-                />
-            </div>
-        ))
     }
 
-    handleActivePhotoIndexIncrement(){
-        if (this.state.activePhotoIndex < this.productPhotosArray.length - 1) {
+    handleActivePhotoIndexIncrement(photoCount){
+        if (this.state.activePhotoIndex < photoCount.length - 1) {
             this.setState({activePhotoIndex: this.state.activePhotoIndex + 1})
         }
     }
@@ -43,14 +32,26 @@ class CartProductPhotos extends Component {
     }
 
     render(){
+
+        const productPhotosArray = this.props.productPhotos.map((photo, index) => (
+            <div className="cart-product-photos__photo-container">
+                <img 
+                    src={photo} 
+                    alt="product" 
+                    key={"cart-product-photo" + index}
+                />
+            </div>
+        ))
+
         return (
             <div className={`cart-product-photos ${this.size}`}>
                 <div className="cart-product-photos__active-photo">
-                    {this.productPhotosArray[this.state.activePhotoIndex]}
+                    {productPhotosArray[this.state.activePhotoIndex]}
                 </div>
                 {
-                    (this.isSliderVisible && this.productPhotosArray.length > 1) &&
+                    (this.isSliderVisible && productPhotosArray.length > 1) &&
                     <PhotoSwitcher
+                        photoCount={productPhotosArray.length}
                         handleActivePhotoIndexIncrement={this.handleActivePhotoIndexIncrement}
                         handleActivePhotoIndexDecrement={this.handleActivePhotoIndexDecrement}
                     />
