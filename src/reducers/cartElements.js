@@ -1,13 +1,6 @@
 import getFromLocalStorage from "../helpers/getFromLocalStorage";
 import saveToLocalStorage from "../helpers/saveToLocalStorage";
 
-const localStorageInit = {
-    isCartOverlayVisible: false,
-    isCurrenciesListOpen: false,
-    currentCurrencySymbol: "$",
-    cartElements:[],
-}
-
 let initState;
 
 if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").cartElements === undefined) {

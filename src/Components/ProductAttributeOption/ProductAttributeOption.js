@@ -6,7 +6,6 @@ class ProductAttributeOption extends Component {
     constructor(props){
         super(props);
         this.changeActiveOption = this.props.changeActiveOption;
-        this.type = this.props.type;
         this.attrSingleOption = this.props.attrSingleOption;
 
         this.size = this.props.size
@@ -14,7 +13,7 @@ class ProductAttributeOption extends Component {
     
     render(){
         
-        const optionType = this.type === "swatch" ? 
+        const optionType = this.props.type === "swatch" ? 
 
             <button 
                 className={`product-attribute-option ${this.size}`}

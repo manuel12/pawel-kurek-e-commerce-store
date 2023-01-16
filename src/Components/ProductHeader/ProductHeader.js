@@ -5,9 +5,6 @@ class ProductHeader extends Component {
     
     constructor(props){
         super(props)
-        this.name = this.props.name;
-        this.brand = this.props.brand;
-
         this.size = this.props.size;
     }
 
@@ -16,8 +13,8 @@ class ProductHeader extends Component {
             <header 
                 className={`product-header ${this.size}`}
             >
-                <h1>{this.name}</h1>
-                <h2>{this.brand}</h2>
+                <h1>{this.props.name}</h1>
+                <h2>{this.props.name}</h2>
             </header>
         )
     }

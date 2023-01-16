@@ -12,34 +12,34 @@ class CartElement extends Component {
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
         this.handleQuantityDecrease = this.handleQuantityDecrease.bind(this);
-        
     }
 
     handleQuantityIncrease(){
-        this.updateProductCartQuantity(this.props.cartElementParams, this.props.cartElementParams.quantity + 1)
+        this.updateProductCartQuantity(this.props.cartElement, this.props.cartElement.quantity + 1)
     }
 
     handleQuantityDecrease(){
-        this.updateProductCartQuantity(this.props.cartElementParams, this.props.cartElementParams.quantity - 1)
+        this.updateProductCartQuantity(this.props.cartElement, this.props.cartElement.quantity - 1)
     }
 
     render(){
+
         return (
             <div className="cart-element">
                 <CartElementDetails
-                    product={this.props.product}
-                    selectedAttributes={this.props.selectedAttributes}
-                    cartElementParams={this.props.cartElementParams}
+                    product={this.props.cartElement.product}
+                    selectedAttributes={this.props.cartElement.selectedAttributes}
+                    cartElementParams={this.props.cartElement}
                 />
                 <CartProductQuantity
                     handleQuantityIncrease={this.handleQuantityIncrease}
                     handleQuantityDecrease={this.handleQuantityDecrease}
-                    quantity={this.props.cartElementParams.quantity}
+                    quantity={this.props.cartElement.quantity}
                 />
 
                 <CartProductPhotos
                     isSliderVisible={true}
-                    productPhotos={this.props.product.gallery}
+                    productPhotos={this.props.cartElement.product.gallery}
                 />
             </div>
         )

@@ -31,6 +31,8 @@ class ProductDetails extends Component {
 
     // Changes current attribute value to new picked option
     changeProductAttributesStates(attrId, newOptionParams){
+        
+        console.log(attrId, newOptionParams)
 
         const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
 

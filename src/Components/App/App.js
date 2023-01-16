@@ -17,8 +17,6 @@ class App extends Component {
 
   addProductToCart = async (productId, selectedAttributes) => {
 
-    console.log(productId, selectedAttributes)
-
     const product = await querySingleProduct(productId);
 
     const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
@@ -26,7 +24,6 @@ class App extends Component {
     if (this.props.cartElements.length > 0) {
 
       let isExistingProductQuantityUpdated = false;
-
       const updatedCartElements = [];
 
       this.props.cartElements.forEach(element => {

@@ -3,7 +3,6 @@ import "./ProductPage.scss";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductPhotos from "../ProductPhotos/ProductPhotos";
 import querySingleProduct from "../../queries/querySingleProduct";
-import { connect } from "react-redux";
 
 class ProductPage extends Component {
 

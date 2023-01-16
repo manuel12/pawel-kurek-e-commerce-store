@@ -6,10 +6,6 @@ class ProductAttribute extends Component {
 
     constructor(props){
         super(props)
-        this.id = this.props.id
-        this.name = this.props.name
-        this.type = this.props.type
-        this.attrOptions = this.props.attrOptions
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
         this.changeActiveOption = this.changeActiveOption.bind(this);
         this.isOptionPicked = this.isOptionPicked.bind(this);
@@ -45,29 +41,29 @@ class ProductAttribute extends Component {
         chosenOption.setAttribute("aria-pressed", true);
 
         // Change attr value based on selected attr option
-        this.changeProductAttributesStates(this.id, attrOptionParams)
+        this.changeProductAttributesStates(this.props.attribute.id, attrOptionParams)
     }
 
     render(){
 
-        const allAttrOptions = this.attrOptions.map(attrSingleOption => {
+        const allAttrOptions = this.props.attribute.items.map(attrSingleOption => {
 
             return (
                 <ProductAttributeOption
-                    key={this.id + attrSingleOption.value}
-                    type={this.type}
+                    key={this.props.id + attrSingleOption.value}
+                    type={this.props.type}
                     size={this.size}
                     attrSingleOption={attrSingleOption}
                     changeActiveOption={this.areAttrsEditable ? this.changeActiveOption : function(){}}
                     productAttributesStates={this.props.productAttributesStates}
-                    isOptionPicked={this.isOptionPicked(this.id, attrSingleOption, this.props.productAttributesStates)}
+                    isOptionPicked={this.isOptionPicked(this.props.attribute.id, attrSingleOption, this.props.productAttributesStates)}
                 />
             )
         })
 
         return(
             <section className={`product-attribute ${this.size}`}>
-                <h3>{this.name}:</h3>
+                <h3>{this.props.attribute.name}:</h3>
                 <div className="product-attribute__all-options">
                     {allAttrOptions}
                 </div>

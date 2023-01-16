@@ -10,7 +10,6 @@ class Cart extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
-        this.eraseZeroQuantityCartElements = this.eraseZeroQuantityCartElements.bind(this);
     }
 
     updateProductCartQuantity = (cartProduct, quantity) => {
@@ -36,17 +35,11 @@ class Cart extends Component {
     
         });
 
-        updatedCartElements = this.eraseZeroQuantityCartElements(updatedCartElements);
-
         this.props.setCartElements(updatedCartElements);
     }
-
-    eraseZeroQuantityCartElements = (cartElements) => {
-        return cartElements.filter(cartEl => cartEl.quantity > 0)
-    }
-    
+        
     render(){
-
+        
         return (
             <section className="cart">
                 <h2 className="cart__header">CART</h2>
@@ -59,9 +52,7 @@ class Cart extends Component {
                                 <React.Fragment key={"cart__element" + index}>
                                     <CartElement
                                         updateProductCartQuantity={this.updateProductCartQuantity}
-                                        cartElementParams={cartElement}
-                                        product={cartElement.product}
-                                        selectedAttributes={cartElement.selectedAttributes}
+                                        cartElement={cartElement}
                                     />
                                     <hr/>
                                 </React.Fragment>
@@ -83,11 +74,11 @@ const mapDispatchToProps = {
   
 const mapStateToProps = (state) => {
 
-const cartElements = state.rootReducer.cartElements;
+    const cartElements = state.rootReducer.cartElements;
 
-return {
-    cartElements
-}
+    return {
+        cartElements
+    }
 }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

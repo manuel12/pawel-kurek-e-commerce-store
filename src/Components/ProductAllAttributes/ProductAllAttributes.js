@@ -6,8 +6,6 @@ class ProductAllAttributes extends Component {
 
     constructor(props){
         super(props);
-        this.attributes = this.props.attributes;
-        this.productId = this.props.productId;
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
 
         this.size = this.props.size ? this.props.size : "";
@@ -18,21 +16,15 @@ class ProductAllAttributes extends Component {
 
     render(){
 
-        const productAttributes = this.attributes.map(attribute => {
-
-            const {id, name, type, items} = attribute;
+        const productAttributes = this.props.attributes.map(attribute => {
 
             return (
                 <ProductAttribute 
-                    id={id}
-                    key={id}
-                    name={name}
-                    type={type}
+                    key={attribute.id}
+                    attribute={attribute}
                     size={this.size}
-                    attrOptions={items}
                     productAttributesStates={this.props.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
-                    attrNameStyles={this.attrNameStyles}
                     areAttrsEditable={this.areAttrsEditable}
                 />
             )
