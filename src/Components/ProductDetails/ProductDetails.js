@@ -31,8 +31,6 @@ class ProductDetails extends Component {
 
     // Changes current attribute value to new picked option
     changeProductAttributesStates(attrId, newOptionParams){
-        
-        console.log(attrId, newOptionParams)
 
         const newProductAttributesStates = this.state.productAttributesStates.map(attr => {
 
@@ -46,7 +44,7 @@ class ProductDetails extends Component {
     
     render(){
 
-        const {id, name, brand, attributes, prices, description} = this.productDetails;
+        const {id, name, brand, attributes, prices, description, inStock} = this.productDetails;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 
@@ -75,6 +73,7 @@ class ProductDetails extends Component {
                 />
 
                 <AddToCartBtn 
+                    disabled={!inStock}
                     addProductToCart={this.addProductToCart}
                     productId={this.productDetails.id}
                     productAttributesStates={this.state.productAttributesStates}

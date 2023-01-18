@@ -11,7 +11,9 @@ class ProductCard extends Component {
 
     showAddToCartBtn(e){
 
-        if (e.target.className === "product-card") {
+        console.log(e.target)
+
+        if (e.target.className === "product-card ") {
 
             // Hide add to cart button for all button that has no mouse over
             const allProducts = [...e.target.parentNode.children]
@@ -38,7 +40,7 @@ class ProductCard extends Component {
 
     render(){
         
-        const {id, name, gallery, prices} = this.props.productParams;
+        const {id, name, gallery, prices, inStock} = this.props.productParams;
 
         const {currency, amount} = prices.find(price => (
             price.currency.symbol === this.props.currentCurrencySymbol
@@ -49,11 +51,18 @@ class ProductCard extends Component {
         return(
             <section 
                 id={id} 
-                className="product-card"
+                className={`product-card ${inStock ? "" : "out-of-stock"}`}
                 onMouseOver={this.showAddToCartBtn.bind(this)}
                 onClick={this.handleRedirectToDetails.bind(this)}
             >
-                <img className="product-card__photo" src={gallery[0]} alt="product"/>
+
+                <div className="product-card__photo-container">
+                    <img className="product-card__photo" src={gallery[0]} alt="product"/>
+                    {
+                        !inStock &&
+                        <p className="product-cart__photo-out-of-stock-info">OUT OF STOCK</p>
+                    }
+                </div>
                 
                 <div className="product-card__description">
                     <span className="product-card__title">{name}</span>

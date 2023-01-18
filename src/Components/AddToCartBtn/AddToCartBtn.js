@@ -16,7 +16,7 @@ class AddToCartBtn extends Component {
     render(){
         return (
             <a 
-                className="add-to-cart-btn"
+                className={`add-to-cart-btn ${this.props.disabled ? "disabled" : ""}`}
                 href="/cart"
                 onClick={this.handleAddProductToCartButtonClick}
             >
