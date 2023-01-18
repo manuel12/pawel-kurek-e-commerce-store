@@ -53,7 +53,7 @@ class CurrencyPicker extends Component {
                                     <button
                                         key={label} 
                                         className="currency-option"
-                                        onClick={() => this.handleCurrencyClick(symbol)}
+                                        onClick={() => this.handleCurrencyClick}
                                     >
                                         <span className="currency-symbol">{symbol}</span>
                                         <span className="currency-label">{label}</span>

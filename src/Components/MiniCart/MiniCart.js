@@ -58,7 +58,7 @@ class MiniCart extends Component {
                         VIEW BAG
                     </a>
                     <a 
-                        href="#"
+                        href="/"
                         className="mini-cart__check-out-link"
                         onClick={this.props.toggleCartOverlay}
                     >
