@@ -7,13 +7,16 @@ import CartOverlay from "../../Components/CartOverlay/CartOverlay";
 import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
 import ErrorBoundary from "../../Components/ErrorBoundary/ErrorBoundary";
 import ProductPage from "../../Components/ProductPage/ProductPage";
+import { copyObject } from "../../helpers/copyObject";
+import getDefaultProductAttributes from "../../helpers/getDefaultProductAttributes";
+import querySingleProduct from "../../queries/querySingleProduct";
 import "./Main.scss";
 
 class Main extends Component {
 
     constructor(props){
         super(props)
-        this.addProductToCart = this.props.addProductToCart;
+        this.addProductToCart = this.addProductToCart.bind(this);
         this.changeAttrValue = this.changeAttrValue.bind(this);
 
         this.state = {
@@ -21,6 +24,67 @@ class Main extends Component {
             cartProdcutsAttributesStates: []
         }
     }
+
+    addProductToCart = async (productId, selectedAttributes) => {
+
+        const product = await querySingleProduct(productId);
+    
+        const productAttributes = selectedAttributes ? selectedAttributes : await getDefaultProductAttributes(productId);
+    
+        if (this.props.cartElements.length > 0) {
+    
+          let isExistingProductQuantityUpdated = false;
+          const updatedCartElements = [];
+    
+          this.props.cartElements.forEach(element => {
+    
+            const elementCopy = copyObject(element);
+      
+            // Check if that type of product exists in cart by comparing ID's
+            if (element.product.id === product.id) {
+    
+              const newProductAttributesStates = JSON.stringify(productAttributes);
+              const cartElementAttributesStates = JSON.stringify(elementCopy.selectedAttributes);
+              
+              // If product exists and has the same attributes, increment it's quantity
+              if (newProductAttributesStates === cartElementAttributesStates) {
+                
+                elementCopy.quantity += 1;
+                isExistingProductQuantityUpdated = true;
+    
+              }
+            
+            }
+    
+            updatedCartElements.push(elementCopy);
+          })
+    
+          // If we don't update existing product order quantity, add new product to cart 
+          if (!isExistingProductQuantityUpdated) {
+    
+            const orderedProduct = {
+              product: product,
+              selectedAttributes: productAttributes,
+              quantity: 1,
+            };
+    
+            updatedCartElements.push(orderedProduct);
+          }
+    
+          this.props.setCartElements(updatedCartElements);
+          
+        } else {
+    
+          const orderedProduct = {
+            product: product,
+            selectedAttributes: productAttributes,
+            quantity: 1
+          };
+            
+          this.props.setCartElements([...this.props.cartElements, orderedProduct]);
+        }
+    
+      }
     
     changeAttrValue(selectedOptionAttrId, selectedOptionParams){
         
