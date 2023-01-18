@@ -3,10 +3,26 @@
 
 .cart-button {
 
+    position: relative;
+
     &__btn {
         height: 100%;
         width: 100%;
         background: transparent;
         border: none;
     }
+
+    &__items-count {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        transform: translate(35%, -35%);
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        color: white;
+        background: black;
+    }
+
+
 }

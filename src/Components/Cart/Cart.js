@@ -37,17 +37,24 @@ class Cart extends Component {
                     }).filter(Boolean)
                 }
 
-                <CartTotalCost
-                    totalCartCost={this.props.totalCartCost}
-                />
+                {this.props.cartElements.length > 0 ?
+                    <>
+                        <CartTotalCost
+                            totalCartCost={this.props.totalCartCost}
+                        />
 
-                <a 
-                    href="/"
-                    className="cart__order-link"
-                    onClick={this.props.toggleCartOverlay}
-                >
-                    ORDER
-                </a>
+                        <a 
+                            href="/"
+                            className="cart__order-link"
+                            onClick={this.props.toggleCartOverlay}
+                        >
+                            ORDER
+                        </a>
+                    </>
+                    :
+                    <p className="cart__no-items">There is no products in cart</p>
+                }
+
 
             </section>
         )

@@ -11,8 +11,6 @@ class ProductCard extends Component {
 
     showAddToCartBtn(e){
 
-        console.log(e.target)
-
         if (e.target.className === "product-card ") {
 
             // Hide add to cart button for all button that has no mouse over
