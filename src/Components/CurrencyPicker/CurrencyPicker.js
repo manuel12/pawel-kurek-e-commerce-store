@@ -8,6 +8,16 @@ import allActions from "../../actions";
 
 class CurrencyPicker extends Component {
 
+    constructor(){
+        super()
+        this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
+    }
+    
+    handleCurrencyClick = (symbol) => {
+        this.props.setCurrency(symbol)
+        this.props.toggleCurrenciesListVisibility();
+    }
+
     render() {
 
         return (
@@ -43,7 +53,7 @@ class CurrencyPicker extends Component {
                                     <button
                                         key={label} 
                                         className="currency-option"
-                                        onClick={() => this.props.setCurrency(symbol)}
+                                        onClick={() => this.handleCurrencyClick(symbol)}
                                     >
                                         <span className="currency-symbol">{symbol}</span>
                                         <span className="currency-label">{label}</span>
@@ -76,7 +86,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
     
     const isCurrenciesListOpen = state.rootReducer.currenciesList;
-    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol
+    const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;
     
     return {
         isCurrenciesListOpen,

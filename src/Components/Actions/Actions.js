@@ -6,7 +6,6 @@ import "./Actions.scss";
 class Actions extends Component {
 
     render() {
-        
         return (
             <div className="actions">
                 <CurrencyPicker/>

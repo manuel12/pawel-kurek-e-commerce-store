@@ -10,7 +10,6 @@ class MiniCartElement extends Component {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-        this.changeAttrValue = this.props.changeAttrValue;
 
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
         this.handleQuantityDecrease = this.handleQuantityDecrease.bind(this);
@@ -19,11 +18,11 @@ class MiniCartElement extends Component {
     }
 
     handleQuantityIncrease(){
-        this.updateProductCartQuantity(this.props.cartElementParams, this.props.cartElementParams.quantity + 1)
+        this.updateProductCartQuantity(this.props.cartElement, this.props.cartElement.quantity + 1)
     }
 
     handleQuantityDecrease(){
-        this.updateProductCartQuantity(this.props.cartElementParams, this.props.cartElementParams.quantity - 1)
+        this.updateProductCartQuantity(this.props.cartElement, this.props.cartElement.quantity - 1)
     }
 
     render(){
@@ -31,23 +30,21 @@ class MiniCartElement extends Component {
         return (
             <div className="mini-cart-element">
                 <MiniCartElementDetails
-                    product={this.props.product}
-                    changeAttrValue={this.changeAttrValue}
-                    selectedAttributes={this.props.selectedAttributes}
+                    product={this.props.cartElement.product}
+                    selectedAttributes={this.props.cartElement.selectedAttributes}
                     cartElementParams={this.props.cartElementParams}
                     size={this.size}
                 />
                 <CartProductQuantity
                     handleQuantityIncrease={this.handleQuantityIncrease}
                     handleQuantityDecrease={this.handleQuantityDecrease}
-                    cartElementParams={this.props.cartElementParams}
-                    updateProductCartQuantity={this.updateProductCartQuantity}
+                    quantity={this.props.cartElement.quantity}
                     size={this.size}
                 />
 
                 <CartProductPhotos
                     isSliderVisible={false}
-                    productPhotos={this.props.product.gallery}
+                    productPhotos={this.props.cartElement.product.gallery}
                     size={this.size}
                 />
             </div>
@@ -55,8 +52,6 @@ class MiniCartElement extends Component {
     }
 }
 
-
-  
 const mapStateToProps = (state) => {
 
     const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;

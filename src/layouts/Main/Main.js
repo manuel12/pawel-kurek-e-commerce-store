@@ -18,10 +18,11 @@ class Main extends Component {
         super(props)
         this.addProductToCart = this.addProductToCart.bind(this);
         this.changeAttrValue = this.changeAttrValue.bind(this);
+        this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
 
         this.state = {
             productId: "",
-            cartProdcutsAttributesStates: []
+            cartProductsAttributesStates: []
         }
     }
 
@@ -51,9 +52,7 @@ class Main extends Component {
                 
                 elementCopy.quantity += 1;
                 isExistingProductQuantityUpdated = true;
-    
               }
-            
             }
     
             updatedCartElements.push(elementCopy);
@@ -84,15 +83,41 @@ class Main extends Component {
           this.props.setCartElements([...this.props.cartElements, orderedProduct]);
         }
     
-      }
+    }
+
+    updateProductCartQuantity = (cartProduct, quantity) => {
+
+        const productToUpdate = JSON.stringify(cartProduct);
+        const cartElementsCopy = copyObject(this.props.cartElements);
     
-    changeAttrValue(selectedOptionAttrId, selectedOptionParams){
+        // Update quantity of particular product and delete if from cart if it's quantity is 0
+        let updatedCartElements = []
+
+        cartElementsCopy.forEach(cartEl => {
+        
+          if (JSON.stringify(cartEl) === productToUpdate) {
+            cartEl.quantity = quantity;
+
+            if (cartEl.quantity > 0) {
+                updatedCartElements.push(cartEl)
+            }
+
+          } else {
+            updatedCartElements.push(cartEl)
+          }
+    
+        });
+
+        this.props.setCartElements(updatedCartElements);
+    }
+    
+    changeAttrValue = (selectedOptionAttrId, selectedOptionParams) => {
         
         // Continue if any attribute is set
-        if (this.state.cartProdcutsAttributesStates.length > 0) {
+        if (this.state.cartProductsAttributesStates.length > 0) {
 
             // Check if any of attributes has changed it's value and save it if so
-            const newAttributesStates = this.state.cartProdcutsAttributesStates.map(attribute => {
+            const newAttributesStates = this.state.cartProductsAttributesStates.map(attribute => {
     
                 if (attribute.attrId === selectedOptionAttrId) {
                     return {
@@ -104,11 +129,11 @@ class Main extends Component {
                 }
             })
     
-            this.setState({cartProdcutsAttributesStates: newAttributesStates})
+            this.setState({cartProductsAttributesStates: newAttributesStates})
 
         } else {
 
-            this.setState({cartProdcutsAttributesStates: [
+            this.setState({cartProductsAttributesStates: [
                 {
                     attrId: selectedOptionAttrId,
                     attrValue: selectedOptionParams.value
@@ -196,6 +221,7 @@ class Main extends Component {
                                     path={`/cart`}
                                     element={
                                         <Cart
+                                            updateProductCartQuantity={this.updateProductCartQuantity}
                                             totalCartCost={totalCartCost}
                                         />
                                     }
