@@ -3,7 +3,6 @@ import cartOverlayActions from "./cartOverlayActions";
 import currenciesListActions from "./currenciesListActions";
 import currentCurrencySymbolActions from "./currentCurrencySymbolActions";
 
-
 const allActions = {
   cartElementsActions,
   cartOverlayActions,

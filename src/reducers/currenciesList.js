@@ -18,6 +18,10 @@ if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").i
 
 const currenciesList = (state = initState, action) => {
     switch(action.type) {
+        case "OPEN_CURRENCY_PICKER":
+            return true;
+        case "CLOSE_CURRENCY_PICKER":
+            return false;
         case "TOGGLE_VISIBILITY":
             saveToLocalStorage("state", !state, "isCurrenciesListOpen")
             return !state;
