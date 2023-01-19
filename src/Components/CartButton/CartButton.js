@@ -7,7 +7,7 @@ class CartButton extends Component {
 
     render() {
 
-        const itemsCount = this.props.cartElements.length;
+        const itemsQuantity = this.props.cartElements.map(cartEl => cartEl.quantity).reduce((acc, cur) => acc + cur, 0);
         
         return (
             <div className="cart-button">
@@ -16,9 +16,9 @@ class CartButton extends Component {
                     onClick={this.props.toggleCartOverlay}
                 >
                     {
-                        itemsCount > 0 &&
+                        itemsQuantity > 0 &&
                         <span className="cart-button__items-count">
-                            {this.props.cartElements.length}
+                            {itemsQuantity}
                         </span>
                     }
                     

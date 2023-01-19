@@ -23,7 +23,6 @@ const cartOverlay = (state = initState, action) => {
             saveToLocalStorage("state", newState, "isCartOverlayVisible");
             return newState;
         default:
-            console.log(state, "cart overlay reducer")
             return state;
     }
 }

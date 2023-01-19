@@ -19,8 +19,8 @@ class CartProductPhotos extends Component {
         }
     }
 
-    handleActivePhotoIndexIncrement(photoCount){
-        if (this.state.activePhotoIndex < photoCount.length - 1) {
+    handleActivePhotoIndexIncrement(){
+        if (this.state.activePhotoIndex < this.props.productPhotos.length - 1) {
             this.setState({activePhotoIndex: this.state.activePhotoIndex + 1})
         }
     }
@@ -32,7 +32,6 @@ class CartProductPhotos extends Component {
     }
 
     render(){
-
         const productPhotosArray = this.props.productPhotos.map((photo, index) => (
             <div className="cart-product-photos__photo-container">
                 <img 
@@ -51,7 +50,6 @@ class CartProductPhotos extends Component {
                 {
                     (this.isSliderVisible && productPhotosArray.length > 1) &&
                     <PhotoSwitcher
-                        photoCount={productPhotosArray.length}
                         handleActivePhotoIndexIncrement={this.handleActivePhotoIndexIncrement}
                         handleActivePhotoIndexDecrement={this.handleActivePhotoIndexDecrement}
                     />

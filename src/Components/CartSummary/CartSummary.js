@@ -6,7 +6,7 @@ class CartSummary extends Component {
     
     render(){
         const tax = (this.props.totalCartCost * 0.21).toFixed(2);
-        const quantityOfProducts = this.props.cartElements.map(cartEl => cartEl.quantity).reduce((acc, cur) => acc + cur)
+        const itemsQuantity = this.props.cartElements.map(cartEl => cartEl.quantity).reduce((acc, cur) => acc + cur, 0)
 
         return(
             <div className="cart-total-cost">
@@ -29,7 +29,7 @@ class CartSummary extends Component {
                                 Quantity:
                             </td>
                             <td className="cart-total-cost__prop-value">
-                                <span>{quantityOfProducts}</span>
+                                <span>{itemsQuantity}</span>
                             </td>
                         </tr>
 

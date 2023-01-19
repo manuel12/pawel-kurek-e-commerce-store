@@ -20,7 +20,7 @@ class PhotoSwitcher extends Component {
                 </button>
                 <button 
                     className="photo-switcher__next"
-                    onClick={this.handleActivePhotoIndexIncrement(this.props.photoCount)}
+                    onClick={this.handleActivePhotoIndexIncrement}
                 >    
                     <img src="/assets/img/dash-right.svg" alt="dash right"/>
                 </button>
