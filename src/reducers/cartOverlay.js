@@ -5,11 +5,12 @@ let initState;
 
 if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").isCartOverlayVisible === undefined) {
 
+    initState = false;
+    
     saveToLocalStorage("state", {
         ...getFromLocalStorage("state"),
         isCartOverlayVisible: false
     })
-    initState = [];
 
 } else {
     initState = getFromLocalStorage("state").isCartOverlayVisible;
@@ -18,12 +19,11 @@ if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").i
 const cartOverlay = (state = initState, action) => {
     switch(action.type) {
         case "TOGGLE_CART_OVERLAY":
-            
             const newState = !state;
             saveToLocalStorage("state", newState, "isCartOverlayVisible");
-
             return newState;
         default:
+            console.log(state, "cart overlay reducer")
             return state;
     }
 }

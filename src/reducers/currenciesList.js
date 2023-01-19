@@ -5,11 +5,12 @@ let initState;
 
 if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").isCurrenciesListOpen === undefined) {
 
+    initState = false;
+    
     saveToLocalStorage("state", {
         ...getFromLocalStorage("state"),
         isCurrenciesListOpen: false
     })
-    initState = [];
 
 } else {
     initState = getFromLocalStorage("state").isCurrenciesListOpen;
