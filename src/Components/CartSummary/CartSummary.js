@@ -1,11 +1,12 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import "./CartTotalCost.scss";
+import "./CartSummary.scss";
 
-class CartTotalCost extends Component {
+class CartSummary extends Component {
     
     render(){
         const tax = (this.props.totalCartCost * 0.21).toFixed(2);
+        const quantityOfProducts = this.props.cartElements.map(cartEl => cartEl.quantity).reduce((acc, cur) => acc + cur)
 
         return(
             <div className="cart-total-cost">
@@ -28,7 +29,7 @@ class CartTotalCost extends Component {
                                 Quantity:
                             </td>
                             <td className="cart-total-cost__prop-value">
-                                <span>{this.props.cartElements.length}</span>
+                                <span>{quantityOfProducts}</span>
                             </td>
                         </tr>
 
@@ -65,4 +66,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(CartTotalCost);
+export default connect(mapStateToProps, null)(CartSummary);

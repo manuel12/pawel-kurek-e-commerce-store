@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 import CartElement from "../CartElement/CartElement";
-import CartTotalCost from "../CartTotalCost/CartTotalCost";
+import CartSummary from "../CartSummary/CartSummary";
 import "./Cart.scss";
 
 class Cart extends Component {
@@ -39,7 +39,7 @@ class Cart extends Component {
 
                 {this.props.cartElements.length > 0 ?
                     <>
-                        <CartTotalCost
+                        <CartSummary
                             totalCartCost={this.props.totalCartCost}
                         />
 
