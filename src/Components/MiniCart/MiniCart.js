@@ -29,20 +29,15 @@ class MiniCart extends Component {
                 {
                     this.props.cartElements.map((cartElement, index) => {
 
-                        if (cartElement.quantity > 0) {
-                            return (
-                                <React.Fragment key={"mini__cart__element" + index}>
-                                    <MiniCartElement
-                                        updateProductCartQuantity={this.updateProductCartQuantity}
-                                        cartElement={cartElement}
-                                    />
-                                </React.Fragment>
-                            )
-                        } else {
-                            return false
-                        }   
-                        
-                    }).filter(Boolean)
+                        return (
+                            <React.Fragment key={"mini__cart__element" + index}>
+                                <MiniCartElement
+                                    updateProductCartQuantity={this.updateProductCartQuantity}
+                                    cartElement={cartElement}
+                                />
+                            </React.Fragment>
+                        )
+                    })
                 }
 
                 <MiniCartTotalCost
@@ -65,6 +60,7 @@ class MiniCart extends Component {
                         CHECK OUT
                     </a>
                 </div>
+                
             </div>
         )
     }

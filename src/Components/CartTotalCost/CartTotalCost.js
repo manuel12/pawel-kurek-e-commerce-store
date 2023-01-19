@@ -5,7 +5,6 @@ import "./CartTotalCost.scss";
 class CartTotalCost extends Component {
     
     render(){
-
         const tax = (this.props.totalCartCost * 0.21).toFixed(2);
 
         return(

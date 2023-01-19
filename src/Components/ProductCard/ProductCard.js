@@ -38,7 +38,7 @@ class ProductCard extends Component {
 
     render(){
         
-        const {id, name, gallery, prices, inStock} = this.props.productParams;
+        const {id, name, brand, gallery, prices, inStock} = this.props.productParams;
 
         const {currency, amount} = prices.find(price => (
             price.currency.symbol === this.props.currentCurrencySymbol
@@ -63,7 +63,7 @@ class ProductCard extends Component {
                 </div>
                 
                 <div className="product-card__description">
-                    <span className="product-card__title">{name}</span>
+                    <span className="product-card__title">{brand} {name}</span>
                     <span className="product-card__price">{symbol}{amount}</span>
                 </div>
 
