@@ -9,9 +9,3 @@
 ## Build
 
 `npm build` to create app for production
-
-## Tech Stack
-
-- ReactJS
-- HTML
-- Sass
