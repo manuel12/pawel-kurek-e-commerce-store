@@ -12,9 +12,8 @@ class Price extends Component {
 
         return (
             <div className={`price ${this.size}`}>
-                    {this.size === "small" ? null : <h3>PRICE:</h3>}
-
-                    <span>{this.props.symbol}{this.props.amount}</span>
+                {this.size === "small" ? null : <h3>PRICE:</h3>}
+                <span>{this.props.symbol}{this.props.amount}</span>
             </div>
         )
     }

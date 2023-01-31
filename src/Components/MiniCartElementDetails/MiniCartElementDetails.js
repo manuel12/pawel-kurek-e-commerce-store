@@ -34,6 +34,7 @@ class MiniCartElementDetails extends Component {
                     amount={price.amount}
                     size={this.size}
                 />
+                
                 <ProductAllAttributes 
                     productAttributesStates={this.props.selectedAttributes}
                     attributes={attributes}

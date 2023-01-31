@@ -21,7 +21,6 @@ class MiniCartTotalCost extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
     
 const currentCurrencySymbol = state.rootReducer.currentCurrencySymbol;

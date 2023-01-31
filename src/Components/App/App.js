@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Main from '../../Layouts/Main/Main';
-import Header from '../../Layouts/Header/Header';
 import './App.scss';
 import allActions from '../../actions';
 import { connect } from 'react-redux';
 import isDescendant from '../../helpers/isDescendant';
+import Header from "../../Layouts/Header/Header.js";
+import Main from "../../Layouts/Main/Main"
 
 class App extends Component {
 
@@ -38,7 +38,7 @@ class App extends Component {
         onClick={this.handleAppClick}
       >
         <Header/>
-        <Main />
+        <Main/>
       </div>
     )
   }
