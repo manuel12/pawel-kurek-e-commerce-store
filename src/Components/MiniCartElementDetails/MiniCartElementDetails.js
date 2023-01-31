@@ -10,8 +10,6 @@ class MiniCartElementDetails extends Component {
     constructor(props){
         super(props)
         this.product = this.props.product;
-
-        this.size = this.props.size
     }
     
     render(){
@@ -26,20 +24,20 @@ class MiniCartElementDetails extends Component {
                 <ProductHeader 
                     name={name} 
                     brand={brand}
-                    size={this.size}
+                    size={this.props.size}
                 />
 
                 <Price 
                     symbol={price.currency.symbol} 
                     amount={price.amount}
-                    size={this.size}
+                    size={this.props.size}
                 />
                 
                 <ProductAllAttributes 
                     productAttributesStates={this.props.selectedAttributes}
                     attributes={attributes}
                     productId={id}
-                    size={this.size}
+                    size={this.props.size}
                     areAttrsEditable={false}
                 />
 

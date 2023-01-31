@@ -7,17 +7,15 @@ class CartProductQuantity extends Component {
         super(props);
 
         this.handleQuantityIncrease= this.props.handleQuantityIncrease;
-        this.handleQuantityDecrease= this.props.handleQuantityDecrease
+        this.handleQuantityDecrease= this.props.handleQuantityDecrease;
 
-        this.size = this.props.size ? this.props.size : "";
-
-        this.minusIconSrc = this.size === "small" ? "/assets/img/minus-icon-small.svg" : "/assets/img/minus-icon.svg"
-        this.plucIconSrc = this.size === "small" ? "/assets/img/plus-icon-small.svg" : "/assets/img/plus-icon.svg"
+        this.minusIconSrc = this.props.size === "small" ? "/assets/img/minus-icon-small.svg" : "/assets/img/minus-icon.svg"
+        this.plucIconSrc = this.props.size === "small" ? "/assets/img/plus-icon-small.svg" : "/assets/img/plus-icon.svg"
     }
 
     render(){
         return (
-            <section className={`cart-product-quantity ${this.size}`}>
+            <section className={`cart-product-quantity ${this.props.size}`}>
                 
                 <button 
                     className="cart-product-quantity__change-amount more"

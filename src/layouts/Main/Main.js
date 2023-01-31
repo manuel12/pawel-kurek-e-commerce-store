@@ -1,15 +1,15 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
-import allActions from "../../actions";
-import Cart from "../../Components/Cart/Cart";
-import CartOverlay from "../../Components/CartOverlay/CartOverlay";
-import CategoryProducts from "../../Components/CategoryProducts/CategoryProducts";
-import ErrorBoundary from "../../Components/ErrorBoundary/ErrorBoundary";
-import ProductPage from "../../Components/ProductPage/ProductPage";
-import { copyObject } from "../../helpers/copyObject";
-import getDefaultProductAttributes from "../../helpers/getDefaultProductAttributes";
-import querySingleProduct from "../../queries/querySingleProduct";
+import allActions from "../actions";
+import Cart from "../Components/Cart/Cart";
+import CartOverlay from "../Components/CartOverlay/CartOverlay";
+import CategoryProducts from "../Components/CategoryProducts/CategoryProducts";
+import ErrorBoundary from "../Components/ErrorBoundary/ErrorBoundary";
+import ProductPage from "../Components/ProductPage/ProductPage";
+import { copyObject } from "../helpers/copyObject";
+import getDefaultProductAttributes from "../helpers/getDefaultProductAttributes";
+import querySingleProduct from "../queries/querySingleProduct";
 import "./Main.scss";
 
 class Main extends Component {
@@ -158,7 +158,7 @@ class Main extends Component {
         return (
             <main>
 
-                {this.props.isCartOverlayVisible && 
+                {this.props.isCartOverlayVisible &&
                     <CartOverlay 
                         updateProductCartQuantity={this.updateProductCartQuantity}
                         changeAttrValue={this.changeAttrValue}

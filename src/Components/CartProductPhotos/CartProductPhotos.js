@@ -8,8 +8,6 @@ class CartProductPhotos extends Component {
         super(props)
         this.handleActivePhotoIndexDecrement = this.handleActivePhotoIndexDecrement.bind(this);
         this.handleActivePhotoIndexIncrement = this.handleActivePhotoIndexIncrement.bind(this);
-        
-        this.size = this.props.size ? this.props.size : "";
 
         // Enable only if slider is needed
         this.isSliderVisible = this.props.isSliderVisible;
@@ -43,7 +41,7 @@ class CartProductPhotos extends Component {
         ))
 
         return (
-            <div className={`cart-product-photos ${this.size}`}>
+            <div className={`cart-product-photos ${this.props.size}`}>
                 <div className="cart-product-photos__active-photo">
                     {productPhotosArray[this.state.activePhotoIndex]}
                 </div>
