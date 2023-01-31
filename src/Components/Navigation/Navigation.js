@@ -33,7 +33,7 @@ class Navigation extends PureComponent {
                                 role="tab"
                                 aria-selected={isSelected}
                                 onClick={() => setCurrentRoute(name)}
-                                >
+                            >
                                 {name}
                             </NavLink>
                         )

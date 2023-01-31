@@ -7,8 +7,6 @@ class ProductAllAttributes extends PureComponent {
     constructor(props){
         super(props);
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
-
-        this.size = this.props.size ? this.props.size : "";
         
         // Set attrs to editable if it's not specified
         this.areAttrsEditable = this.props.areAttrsEditable;
@@ -22,7 +20,7 @@ class ProductAllAttributes extends PureComponent {
                 <ProductAttribute 
                     key={attribute.id}
                     attribute={attribute}
-                    size={this.size}
+                    size={this.props.size}
                     productAttributesStates={this.props.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
                     areAttrsEditable={this.areAttrsEditable}
@@ -31,7 +29,7 @@ class ProductAllAttributes extends PureComponent {
         })
 
         return (
-            <div className={`product-all-attributes ${this.size}`}>
+            <div className={`product-all-attributes ${this.props.size}`}>
                 {productAttributes}
             </div>
         )

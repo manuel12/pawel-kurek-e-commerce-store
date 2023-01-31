@@ -6,7 +6,6 @@ import './Header.scss';
 
 class Header extends PureComponent {
     render(){
-        
         return (
             <header className="header">         
                 <Navigation/> 

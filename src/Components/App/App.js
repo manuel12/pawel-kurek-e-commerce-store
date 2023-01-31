@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import './App.scss';
 import allActions from '../../actions';
 import { connect } from 'react-redux';

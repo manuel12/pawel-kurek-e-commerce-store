@@ -1,9 +1,9 @@
-import { PureComponent } from "react";
+import { Component } from "react";
 import CartButton from "../CartButton/CartButton";
 import CurrencyPicker from "../CurrencyPicker/CurrencyPicker";
 import "./Actions.scss";
 
-class Actions extends PureComponent {
+class Actions extends Component {
 
     render() {
         return (
