@@ -1,9 +1,9 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 import './CartButton.scss'
 
-class CartButton extends Component {
+class CartButton extends PureComponent {
 
     render() {
 

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { connect } from "react-redux";
 import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
 import allActions from "../actions";
@@ -12,7 +12,7 @@ import getDefaultProductAttributes from "../helpers/getDefaultProductAttributes"
 import querySingleProduct from "../queries/querySingleProduct";
 import "./Main.scss";
 
-class Main extends Component {
+class Main extends PureComponent {
 
     constructor(props){
         super(props)

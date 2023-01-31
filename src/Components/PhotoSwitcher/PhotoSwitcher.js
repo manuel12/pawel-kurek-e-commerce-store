@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./PhotoSwitcher.scss";
 
-class PhotoSwitcher extends Component {
+class PhotoSwitcher extends PureComponent {
 
     constructor(props){
         super(props)

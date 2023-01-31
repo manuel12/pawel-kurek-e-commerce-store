@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import ProductAttribute from "../ProductAttribute/ProductAttribute";
 import './ProductAllAttributes.scss';
 
-class ProductAllAttributes extends Component {
+class ProductAllAttributes extends PureComponent {
 
     constructor(props){
         super(props);

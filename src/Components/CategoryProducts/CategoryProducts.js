@@ -1,11 +1,11 @@
 import { Query } from "@apollo/client/react/components";
-import { Component } from "react";
+import { PureComponent } from "react";
 import capitalizeWord from "../../helpers/capitalizeWord";
 import ProductCard from "../ProductCard/ProductCard";
 import "./CategoryProducts.scss";
 import queryProducts from "../../queries/queryProducts.js";
 
-class CategoryProducts extends Component {
+class CategoryProducts extends PureComponent {
     
     constructor(props){
         super(props);

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 import MiniCartElement from "../MiniCartElement/MiniCartElement";
 import MiniCartTotalCost from "../MiniCortTotalCost/MiniCartTotalCost";
 import './MiniCart.scss';
 
-class MiniCart extends Component {
+class MiniCart extends PureComponent {
 
     constructor(props){
         super(props)

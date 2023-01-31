@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import parse from "html-react-parser";
 
-class ParsedHtml extends Component {
+class ParsedHtml extends PureComponent {
 
     constructor(props){
         super(props)

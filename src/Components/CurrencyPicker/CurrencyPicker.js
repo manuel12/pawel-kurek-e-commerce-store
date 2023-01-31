@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { Query } from "@apollo/client/react/components";
 import {BiChevronDown as CurrencyPickerDash} from 'react-icons/bi';
 import "./CurrencyPicker.scss";
@@ -6,7 +6,7 @@ import queryCurrencies from "../../queries/queryCurrencies";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 
-class CurrencyPicker extends Component {
+class CurrencyPicker extends PureComponent {
 
     constructor(){
         super()

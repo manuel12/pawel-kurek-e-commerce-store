@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./CartProductQuantity.scss";
 
-class CartProductQuantity extends Component {
+class CartProductQuantity extends PureComponent {
 
     constructor(props){
         super(props);

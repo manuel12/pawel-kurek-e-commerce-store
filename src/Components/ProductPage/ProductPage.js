@@ -1,10 +1,10 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./ProductPage.scss";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductPhotos from "../ProductPhotos/ProductPhotos";
 import querySingleProduct from "../../queries/querySingleProduct";
 
-class ProductPage extends Component {
+class ProductPage extends PureComponent {
 
     constructor(props){
         super(props)

@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { connect } from "react-redux";
 import "./CartSummary.scss";
 
-class CartSummary extends Component {
+class CartSummary extends PureComponent {
     
     render(){
         const tax = (this.props.totalCartCost * 0.21).toFixed(2);

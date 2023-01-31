@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./ErrorBoundary.scss";
 
-class ErrorBoundary extends Component {
+class ErrorBoundary extends PureComponent {
     
     render(){
         return(

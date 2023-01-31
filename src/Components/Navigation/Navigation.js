@@ -1,12 +1,12 @@
 import { Query } from "@apollo/client/react/components";
-import { Component } from "react";
+import { PureComponent } from "react";
 import { BrowserRouter, NavLink } from "react-router-dom";
 import getCurrentRoute from "../../helpers/getCurrentRoute";
 import setCurrentRoute from "../../helpers/setCurrentRoute";
 import queryCategories from "../../queries/queryCategories";
 import './Navigation.scss';
 
-class Navigation extends Component {
+class Navigation extends PureComponent {
 
     render() {
         return (

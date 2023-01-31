@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { connect } from "react-redux";
 import './MiniCartTotalCost.scss';
 
-class MiniCartTotalCost extends Component {
+class MiniCartTotalCost extends PureComponent {
 
     render(){
         return(

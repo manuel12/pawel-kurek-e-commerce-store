@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./ProductHeader.scss";
 
-class ProductHeader extends Component {
+class ProductHeader extends PureComponent {
     
     constructor(props){
         super(props)

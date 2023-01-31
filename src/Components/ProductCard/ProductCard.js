@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import { connect } from "react-redux";
 import "./ProductCard.scss";
 
-class ProductCard extends Component {
+class ProductCard extends PureComponent {
 
     constructor(props){
         super(props)

@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import MiniCart from "../MiniCart/MiniCart";
 import "./CartOverlay.scss"
 
-class CartOverlay extends Component {
+class CartOverlay extends PureComponent {
 
     constructor(props){
         super(props)

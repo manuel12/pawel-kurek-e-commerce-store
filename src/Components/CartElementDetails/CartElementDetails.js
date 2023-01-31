@@ -1,11 +1,11 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Price from '../Price/Price';
 import ProductAllAttributes from '../ProductAllAttributes/ProductAllAttributes';
 import ProductHeader from '../ProductHeader/ProductHeader';
 import './CartElementDetails.scss';
 
-class CartElementDetails extends Component {
+class CartElementDetails extends PureComponent {
     
     render(){
 

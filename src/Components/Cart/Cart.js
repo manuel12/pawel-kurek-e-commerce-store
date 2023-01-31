@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import allActions from "../../actions";
 import CartElement from "../CartElement/CartElement";
 import CartSummary from "../CartSummary/CartSummary";
 import "./Cart.scss";
 
-class Cart extends Component {
+class Cart extends PureComponent {
 
     constructor(props){
         super(props)

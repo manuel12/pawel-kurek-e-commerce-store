@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import './Logo.scss';
 
-class Logo extends Component {
+class Logo extends PureComponent {
     render() {
         return (
             <button className="logo-container">

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './App.scss';
 import allActions from '../../actions';
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import isDescendant from '../../helpers/isDescendant';
 import Header from '../../layouts/Header/Header';
 import Main from '../../layouts/Main/Main';
 
-class App extends Component {
+class App extends PureComponent {
 
   constructor(){
     super()

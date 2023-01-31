@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import "./ProductDetails.scss";
 import ProductAllAttributes from "../ProductAllAttributes/ProductAllAttributes";
 import Price from "../Price/Price";
@@ -8,7 +8,7 @@ import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import getDefaultProductAttributes from "../../helpers/getDefaultProductAttributes";
 import { connect } from "react-redux";
 
-class ProductDetails extends Component {
+class ProductDetails extends PureComponent {
 
     constructor(props){
         super(props)
