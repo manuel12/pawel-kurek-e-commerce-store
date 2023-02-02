@@ -9,10 +9,6 @@ class ProductAttribute extends PureComponent {
         this.changeProductAttributesStates = this.props.changeProductAttributesStates;
         this.changeActiveOption = this.changeActiveOption.bind(this);
         this.isOptionPicked = this.isOptionPicked.bind(this);
-        
-        this.size = this.props.size ? this.props.size : "";
-
-        this.areAttrsEditable = this.props.areAttrsEditable;
     }
 
     isOptionPicked(attrId, attrOption, productSelectedAttributes){
@@ -52,9 +48,10 @@ class ProductAttribute extends PureComponent {
                 <ProductAttributeOption
                     key={this.props.id + attrSingleOption.value}
                     type={this.props.type}
-                    size={this.size}
+                    size={this.props.size}
                     attrSingleOption={attrSingleOption}
-                    changeActiveOption={this.areAttrsEditable ? this.changeActiveOption : function(){}}
+                    areAttrsEditable={this.props.areAttrsEditable}
+                    changeActiveOption={this.props.areAttrsEditable ? this.changeActiveOption : function(){}}
                     productAttributesStates={this.props.productAttributesStates}
                     isOptionPicked={this.isOptionPicked(this.props.attribute.id, attrSingleOption, this.props.productAttributesStates)}
                 />
@@ -62,7 +59,7 @@ class ProductAttribute extends PureComponent {
         })
 
         return(
-            <section className={`product-attribute ${this.size}`}>
+            <section className={`product-attribute ${this.props.size}`}>
                 <h3>{this.props.attribute.name}:</h3>
                 <div className="product-attribute__all-options">
                     {allAttrOptions}
