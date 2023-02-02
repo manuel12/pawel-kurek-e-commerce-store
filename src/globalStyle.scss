@@ -41,6 +41,7 @@ html:focus-within {
 /* Set default font for whole app */
 html {
   font-family: variables.$ff-Roboto;
+  position: relative;
 }
 
 /* Set core body defaults */

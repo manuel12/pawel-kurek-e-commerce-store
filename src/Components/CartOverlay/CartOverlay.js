@@ -12,7 +12,6 @@ class CartOverlay extends PureComponent {
     render(){
         return(
             <section className="cart-overlay">
-                <div className="cart-overlay__background"></div>
                 <MiniCart 
                     updateProductCartQuantity={this.updateProductCartQuantity}
                     totalCartCost={this.props.totalCartCost}

@@ -37,6 +37,10 @@ class App extends PureComponent {
       <div className="app"
         onClick={this.handleAppClick}
       >
+        {this.props.isCartOverlayVisible &&
+          <div className="app__overlay-background"></div>
+        }
+
         <Header/>
         <Main/>
       </div>
