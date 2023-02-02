@@ -40,7 +40,6 @@ html:focus-within {
 
 /* Set default font for whole app */
 html {
-  overflow-x: hidden;
   font-family: variables.$ff-Roboto;
 }
 
@@ -48,7 +47,7 @@ html {
 body {
   min-height: 100vh;
   height: 100%;
-  width: 100vw;
+  width: 100%;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   color: variables.$clr-primary;
