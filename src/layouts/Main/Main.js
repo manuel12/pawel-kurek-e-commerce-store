@@ -1,6 +1,6 @@
 import { PureComponent } from "react";
 import { connect } from "react-redux";
-import { createBrowserRouter, createRoutesFromElements, redirect, Route, RouterProvider } from "react-router-dom";
+import {Route, Routes, Navigate } from "react-router-dom";
 import allActions from "../../actions";
 import Cart from "../../Components/Cart/Cart";
 import CartOverlay from "../../Components/CartOverlay/CartOverlay";
@@ -166,70 +166,68 @@ class Main extends PureComponent {
                     />
                 }
 
-                <RouterProvider router={
-                    createBrowserRouter(
-                        createRoutesFromElements(
-                            <>
-                                <Route
-                                    path={"/"}
-                                    loader={() => {
-                                        throw redirect("/all");
-                                    }}
-                                    errorElement={<ErrorBoundary/>}
-                                />
-                                <Route
-                                    path={`/all`}
-                                    element={
-                                        <CategoryProducts 
-                                            currentCategory="all"
-                                            addProductToCart={this.addProductToCart}
-                                        />
-                                    }
-                                />
-                                
-                                <Route
-                                    path={`/clothes`}
-                                    element={
-                                        <CategoryProducts 
-                                            currentCategory="clothes"
-                                            addProductToCart={this.addProductToCart}
-                                        />
-                                    }
-                                />
+                <Routes>
+                    <Route
+                        path={"*"}
+                        element={<ErrorBoundary/>}
+                    />
 
-                                <Route
-                                    path={`/tech`}
-                                    element={
-                                        <CategoryProducts 
-                                            currentCategory="tech"
-                                            addProductToCart={this.addProductToCart}
-                                        />
-                                    }
-                                />
+                    <Route 
+                        path="/" 
+                        element={<Navigate to="/all"/>} 
+                    />
 
-                                <Route
-                                    path={`/product/:productId`}
-                                    element={
-                                        <ProductPage 
-                                            productId={window.location.pathname.slice(9)}
-                                            addProductToCart={this.addProductToCart}
-                                        />
-                                    }
-                                />
+                    <Route
+                        path={`/all`}
+                        element={
+                            <CategoryProducts 
+                                currentCategory="all"
+                                addProductToCart={this.addProductToCart}
+                            />
+                        }
+                    />
+                    
+                    <Route
+                        path={`/clothes`}
+                        element={
+                            <CategoryProducts 
+                                currentCategory="clothes"
+                                addProductToCart={this.addProductToCart}
+                            />
+                        }
+                    />
 
-                                <Route
-                                    path={`/cart`}
-                                    element={
-                                        <Cart
-                                            updateProductCartQuantity={this.updateProductCartQuantity}
-                                            totalCartCost={totalCartCost}
-                                        />
-                                    }
-                                />
-                            </>
-                        )
-                    )
-                }/>
+                    <Route
+                        path={`/tech`}
+                        element={
+                            <CategoryProducts 
+                                currentCategory="tech"
+                                addProductToCart={this.addProductToCart}
+                            />
+                        }
+                    />
+
+                    <Route
+                        path={`/product/:productId`}
+                        element={
+                            <ProductPage 
+                                productId={window.location.pathname.slice(9)}
+                                addProductToCart={this.addProductToCart}
+                            />
+                        }
+                    />
+
+                    <Route
+                        path={`/cart`}
+                        element={
+                            <Cart
+                                updateProductCartQuantity={this.updateProductCartQuantity}
+                                totalCartCost={totalCartCost}
+                            />
+                        }
+                    />
+                </Routes>
+
                     
             </main>
         )

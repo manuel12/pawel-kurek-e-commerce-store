@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import allActions from "../../actions";
 import MiniCartElement from "../MiniCartElement/MiniCartElement";
 import MiniCartTotalCost from "../MiniCortTotalCost/MiniCartTotalCost";
@@ -45,20 +46,20 @@ class MiniCart extends PureComponent {
                 />
 
                 <div className="mini-cart__links-container">
-                    <a 
-                        href="/cart"
+                    <Link 
+                        to="/cart"
                         className="mini-cart__cart-link"
                         onClick={this.props.toggleCartOverlay}
                     >
                         VIEW BAG
-                    </a>
-                    <a 
-                        href="/"
+                    </Link>
+                    <Link 
+                        to="/"
                         className="mini-cart__check-out-link"
                         onClick={this.props.toggleCartOverlay}
                     >
                         CHECK OUT
-                    </a>
+                    </Link>
                 </div>
                 
             </div>

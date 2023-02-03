@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import allActions from "../../actions";
 import CartElement from "../CartElement/CartElement";
 import CartSummary from "../CartSummary/CartSummary";
@@ -43,13 +44,13 @@ class Cart extends PureComponent {
                             totalCartCost={this.props.totalCartCost}
                         />
 
-                        <a 
-                            href="/"
+                        <Link 
+                            to="/"
                             className="cart__order-link"
                             onClick={this.props.toggleCartOverlay}
                         >
                             ORDER
-                        </a>
+                        </Link>
                     </>
                     :
                     <p className="cart__no-items">There is no products in cart</p>

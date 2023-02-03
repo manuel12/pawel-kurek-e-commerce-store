@@ -27,13 +27,9 @@ class ProductCard extends PureComponent {
         }
     }
 
-    handleRedirectToDetails(e){
-        const productId = e.target.id;
+    handleRedirectToDetails(e, productId){
+        if (e.target.className === "product-card__add-to-cart") return;
         window.location.pathname = `/product/${productId}`
-    }
-
-    handleQuickAddToCart(){
-        this.addProductToCart(this.props.productId);
     }
 
     render(){
@@ -67,13 +63,12 @@ class ProductCard extends PureComponent {
                     <span className="product-card__price">{symbol}{amount}</span>
                 </div>
 
-                <a 
+                <button 
                     className="product-card__add-to-cart"
-                    href="/cart"
-                    onClick={this.handleQuickAddToCart.bind(this)}
+                    onClick={() => this.addProductToCart(this.props.productId)}
                 >
                     <img className="product-card__cart-image" src="/assets/img/cart-white.svg" alt="cart"/>
-                </a>
+                </button>
 
             </section>
         )

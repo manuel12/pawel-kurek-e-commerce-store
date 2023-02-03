@@ -1,8 +1,7 @@
 import { Query } from "@apollo/client/react/components";
 import { PureComponent } from "react";
-import { BrowserRouter, NavLink } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import getCurrentRoute from "../../helpers/getCurrentRoute";
-import setCurrentRoute from "../../helpers/setCurrentRoute";
 import queryCategories from "../../queries/queryCategories";
 import './Navigation.scss';
 
@@ -32,7 +31,7 @@ class Navigation extends PureComponent {
                                 className="categories-list__category"
                                 role="tab"
                                 aria-selected={isSelected}
-                                onClick={() => setCurrentRoute(name)}
+                                // onClick={() => setCurrentRoute(name)}
                             >
                                 {name}
                             </NavLink>
@@ -41,9 +40,7 @@ class Navigation extends PureComponent {
         
                     return (
                         <nav role="tablist" className="categories-list">
-                            <BrowserRouter>
                                 {categoriesNavList}
-                            </BrowserRouter>
                         </nav>
                     )
                 }}

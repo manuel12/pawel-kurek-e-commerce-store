@@ -1,4 +1,5 @@
 import { PureComponent } from "react";
+import { Link } from "react-router-dom";
 import "./AddToCartBtn.scss";
 
 class AddToCartBtn extends PureComponent {
@@ -15,13 +16,13 @@ class AddToCartBtn extends PureComponent {
 
     render(){
         return (
-            <a 
+            <Link 
                 className={`add-to-cart-btn ${this.props.disabled ? "disabled" : ""}`}
-                href="/cart"
+                to="/cart"
                 onClick={this.handleAddProductToCartButtonClick}
             >
                 ADD TO CART
-            </a>
+            </Link>
         )
     }
 }
