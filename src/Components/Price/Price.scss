@@ -17,9 +17,16 @@
 }
 
 .price.small {
-
+    width: 52px;
+    height: 26px;
+    color: variables.$clr-primary;
+    flex: none;
+    flex-grow: 0;
+    
     span {
-        font-weight: 700;
+        font-family: variables.$ff-Raleway;
+        font-style: normal;
+        font-weight: 500;
         font-size: 16px;
         line-height: 160%;
     }

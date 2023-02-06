@@ -21,12 +21,23 @@
 }
 
 .product-attribute.small {
+    gap: 8px;
 
     h3 {
-        text-transform: capitalize;
+        text-transform: initial;
+        width: fit-content;
+        min-height: 16px;
+        font-family: variables.$ff-Raleway;
+        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 16px;
+        display: flex;
+        align-items: center;
+        color: variables.$clr-primary;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
     }
 
     .product-attribute__all-options {

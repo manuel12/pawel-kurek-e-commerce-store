@@ -51,14 +51,14 @@ class MiniCart extends PureComponent {
                         className="mini-cart__cart-link"
                         onClick={this.props.toggleCartOverlay}
                     >
-                        VIEW BAG
+                        <p>VIEW BAG</p>
                     </Link>
                     <Link 
                         to="/"
                         className="mini-cart__check-out-link"
                         onClick={this.props.toggleCartOverlay}
                     >
-                        CHECK OUT
+                        <p>CHECK OUT</p>
                     </Link>
                 </div>
                 

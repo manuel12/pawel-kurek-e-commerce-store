@@ -14,7 +14,7 @@ class ProductAttributeOption extends PureComponent {
         const optionType = this.props.type === "swatch" ? 
 
             <button 
-                className={`product-attribute-option ${this.size}`}
+                className={`product-attribute-option ${this.props.size}`}
                 onClick={(e) => this.changeActiveOption(e, this.attrSingleOption)}
                 data-type="swatch"
                 style={{
