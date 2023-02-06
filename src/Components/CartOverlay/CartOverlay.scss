@@ -4,7 +4,7 @@
 .cart-overlay {
     min-height: 100%;
     height: 100%;
-    width: 100%;
+    width: fit;
     z-index: 1;
 
     ::-webkit-scrollbar {
