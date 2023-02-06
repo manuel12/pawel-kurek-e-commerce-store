@@ -43,6 +43,7 @@ class App extends PureComponent {
 
         <Header/>
         <Main/>
+        
       </div>
     )
   }

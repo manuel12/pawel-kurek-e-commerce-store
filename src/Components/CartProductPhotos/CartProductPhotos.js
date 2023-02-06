@@ -20,12 +20,16 @@ class CartProductPhotos extends PureComponent {
     handleActivePhotoIndexIncrement(){
         if (this.state.activePhotoIndex < this.props.productPhotos.length - 1) {
             this.setState({activePhotoIndex: this.state.activePhotoIndex + 1})
+        } else {
+            this.setState({activePhotoIndex: 0})
         }
     }
 
     handleActivePhotoIndexDecrement(){
         if (this.state.activePhotoIndex > 0) {
             this.setState({activePhotoIndex: this.state.activePhotoIndex - 1})
+        } else {
+            this.setState({activePhotoIndex: this.props.productPhotos.length - 1})
         }
     }
 
