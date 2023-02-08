@@ -18,10 +18,10 @@
         height: 100%;
         text-decoration: none;
         color: variables.$clr-primary;
+    }
 
-        &[aria-selected=true] {
-            color: variables.$clr-accent;
-            border-bottom: 2px solid variables.$clr-accent;
-        }
+    .active {
+        color: variables.$clr-accent;
+        border-bottom: 2px solid variables.$clr-accent;
     }
 }

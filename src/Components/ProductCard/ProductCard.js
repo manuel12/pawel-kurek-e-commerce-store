@@ -7,9 +7,11 @@ class ProductCard extends PureComponent {
     constructor(props){
         super(props)
         this.addProductToCart = this.props.addProductToCart;
+        this.handleRedirectToDetails = this.handleRedirectToDetails.bind(this);
+        this.showAddToCartBtn = this.showAddToCartBtn.bind(this);
     }
 
-    showAddToCartBtn(e){
+    showAddToCartBtn = (e) => {
 
         if (e.target.className === "product-card ") {
 
@@ -27,9 +29,9 @@ class ProductCard extends PureComponent {
         }
     }
 
-    handleRedirectToDetails(e, productId){
+    handleRedirectToDetails = (e) => {
         if (e.target.className === "product-card__add-to-cart") return;
-        window.location.pathname = `/product/${productId}`
+        window.location.pathname = `/product/${this.props.productId}`
     }
 
     render(){
@@ -46,8 +48,8 @@ class ProductCard extends PureComponent {
             <section 
                 id={id} 
                 className={`product-card ${inStock ? "" : "out-of-stock"}`}
-                onMouseOver={this.showAddToCartBtn.bind(this)}
-                onClick={this.handleRedirectToDetails.bind(this)}
+                onMouseOver={this.showAddToCartBtn}
+                onClick={this.handleRedirectToDetails}
             >
 
                 <div className="product-card__photo-container">
