@@ -27,27 +27,29 @@ class MiniCart extends PureComponent {
                     this.props.cartElements.length > 0 ?
 
                         <>
-                            <header className="mini-cart__header">
-                                <span><strong>My Bag</strong>, {itemsCount}</span>
-                            </header>
-                            
-                            {
-                                this.props.cartElements.map((cartElement, index) => {
+                            <div className="mini-cart__products">
+                                <header className="mini-cart__header">
+                                    <span><strong>My Bag</strong>, {itemsCount}</span>
+                                </header>
+                                
+                                {
+                                    this.props.cartElements.map((cartElement, index) => {
 
-                                    return (
-                                        <React.Fragment key={"mini__cart__element" + index}>
-                                            <MiniCartElement
-                                                updateProductCartQuantity={this.updateProductCartQuantity}
-                                                cartElement={cartElement}
-                                            />
-                                        </React.Fragment>
-                                    )
-                                })
-                            }
+                                        return (
+                                            <React.Fragment key={"mini__cart__element" + index}>
+                                                <MiniCartElement
+                                                    updateProductCartQuantity={this.updateProductCartQuantity}
+                                                    cartElement={cartElement}
+                                                />
+                                            </React.Fragment>
+                                        )
+                                    })
+                                }
 
-                            <MiniCartTotalCost
-                                totalCartCost={this.props.totalCartCost}
-                            />
+                                <MiniCartTotalCost
+                                    totalCartCost={this.props.totalCartCost}
+                                />
+                            </div>
 
                             <div className="mini-cart__links-container">
                                 <Link 

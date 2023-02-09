@@ -2,7 +2,7 @@
 @use '../../globalStyle.scss';
 
 .mini-cart { 
-    position: relative;
+    position: absolute;
     height: 677px;
     width: 325px;
     background: variables.$background;
@@ -10,10 +10,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
     padding: 32px 16px;
     gap: 40px;
     left: 1043px;
+
+    &__products {
+    overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
 
     &__header {
         width: 100%;

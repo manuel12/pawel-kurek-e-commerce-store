@@ -13,12 +13,7 @@
     flex-grow: 0;
     
     & > :first-child {
-        width: 136px;
-        display: flex;
-        align-items: flex-start;
-        padding: 0;
-        gap: 8px;
-        flex: none;
+        
     }
     
     & > :nth-child(2) {

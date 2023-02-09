@@ -2,10 +2,15 @@
 @use '../../variables.scss';
 
 .mini-cart-element-details {
-    justify-content: flex-start;
+    width: 136px;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    height: 100%;
+    padding: 0;
+    gap: 4px;
+    flex: none;
+
+    & > :nth-child(2) {
+        margin-bottom: 4px;
+    }
 }
