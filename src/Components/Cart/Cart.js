@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import allActions from "../../actions";
 import CartElement from "../CartElement/CartElement";
 import CartSummary from "../CartSummary/CartSummary";
 import "./Cart.scss";
@@ -18,28 +17,23 @@ class Cart extends PureComponent {
             <section className="cart">
                 <h2 className="cart__header">CART</h2>
                 <hr/>
-                {
-                    this.props.cartElements.map((cartElement, index) => {
-
-                        if (cartElement.quantity > 0) {
-                            return (
-                                <React.Fragment key={"cart__element" + index}>
-                                    <CartElement
-                                        updateProductCartQuantity={this.updateProductCartQuantity}
-                                        cartElement={cartElement}
-                                    />
-                                    <hr/>
-                                </React.Fragment>
-                            )
-                        } else {
-                            return false
-                        }   
-                        
-                    }).filter(Boolean)
-                }
 
                 {this.props.cartElements.length > 0 ?
                     <>
+                        {
+                            this.props.cartElements.map((cartElement, index) => {
+                                return (
+                                    <React.Fragment key={"cart__element" + index}>
+                                        <CartElement
+                                            updateProductCartQuantity={this.updateProductCartQuantity}
+                                            cartElement={cartElement}
+                                        />
+                                        <hr/>
+                                    </React.Fragment>
+                                ) 
+                            })
+                        }
+
                         <CartSummary
                             totalCartCost={this.props.totalCartCost}
                         />
@@ -61,10 +55,6 @@ class Cart extends PureComponent {
         )
     }
 }
-
-const mapDispatchToProps = {
-    setCartElements: allActions.cartElementsActions.setCartElements,
-  }
   
 const mapStateToProps = (state) => {
 
@@ -75,4 +65,4 @@ const mapStateToProps = (state) => {
     }
 }
   
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, null)(Cart);

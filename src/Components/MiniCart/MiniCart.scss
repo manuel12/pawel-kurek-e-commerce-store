@@ -11,14 +11,14 @@
     flex-direction: column;
     align-items: center;
     padding: 32px 16px;
-    gap: 40px;
+    gap: 32px;
     left: 1043px;
 
     &__products {
     overflow-y: scroll;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
     }
 
     &__header {

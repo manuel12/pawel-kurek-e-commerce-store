@@ -10,7 +10,6 @@ class MiniCartElement extends PureComponent {
     constructor(props){
         super(props)
         this.updateProductCartQuantity = this.props.updateProductCartQuantity;
-
         this.handleQuantityIncrease = this.handleQuantityIncrease.bind(this);
         this.handleQuantityDecrease = this.handleQuantityDecrease.bind(this);
 
@@ -32,7 +31,7 @@ class MiniCartElement extends PureComponent {
                 <MiniCartElementDetails
                     product={this.props.cartElement.product}
                     selectedAttributes={this.props.cartElement.selectedAttributes}
-                    cartElementParams={this.props.cartElementParams}
+                    cartElementParams={this.props.cartElement}
                     size={this.size}
                 />
                 <CartProductQuantity

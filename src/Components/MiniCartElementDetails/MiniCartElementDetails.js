@@ -14,7 +14,7 @@ class MiniCartElementDetails extends PureComponent {
     
     render(){
 
-        const {id, name, attributes, prices, brand} = this.product;
+        const {id, name, attributes, prices, brand} = this.props.product;
 
         const price = prices.find(price => price.currency.symbol === this.props.currentCurrencySymbol)
 

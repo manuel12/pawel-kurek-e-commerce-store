@@ -108,6 +108,7 @@ class Main extends PureComponent {
     
         });
 
+        console.log(updatedCartElements);
         this.props.setCartElements(updatedCartElements);
     }
     
