@@ -1,20 +1,7 @@
 import getFromLocalStorage from "../helpers/getFromLocalStorage"
 import saveToLocalStorage from "../helpers/saveToLocalStorage";
 
-let initState;
-
-if (getFromLocalStorage("state") === undefined || getFromLocalStorage("state").isCartOverlayVisible === undefined) {
-
-    initState = false;
-    
-    saveToLocalStorage("state", {
-        ...getFromLocalStorage("state"),
-        isCartOverlayVisible: false
-    })
-
-} else {
-    initState = getFromLocalStorage("state").isCartOverlayVisible;
-}
+let initState = getFromLocalStorage("state").isCartOverlayVisible || false;
 
 const cartOverlay = (state = initState, action) => {
     switch(action.type) {
