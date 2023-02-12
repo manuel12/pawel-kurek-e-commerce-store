@@ -19,6 +19,7 @@ class Main extends PureComponent {
         this.addProductToCart = this.addProductToCart.bind(this);
         this.changeAttrValue = this.changeAttrValue.bind(this);
         this.updateProductCartQuantity = this.updateProductCartQuantity.bind(this);
+        this.getTotalCartCost = this.getTotalCartCost.bind(this);
 
         this.state = {
             productId: "",
@@ -144,7 +145,7 @@ class Main extends PureComponent {
 
     }
 
-    render(){
+    getTotalCartCost = () => {
 
         const totalCartCost = this.props.cartElements.map(cartEl => {
 
@@ -156,6 +157,10 @@ class Main extends PureComponent {
 
         }).reduce((acc, currentVal) => acc + currentVal, 0).toFixed(2);
 
+        return totalCartCost;
+    }
+
+    render(){
         return (
             <main>
 
@@ -163,7 +168,7 @@ class Main extends PureComponent {
                     <CartOverlay 
                         updateProductCartQuantity={this.updateProductCartQuantity}
                         changeAttrValue={this.changeAttrValue}
-                        totalCartCost={totalCartCost}
+                        totalCartCost={this.getTotalCartCost()}
                     />
                 }
 
@@ -223,7 +228,7 @@ class Main extends PureComponent {
                         element={
                             <Cart
                                 updateProductCartQuantity={this.updateProductCartQuantity}
-                                totalCartCost={totalCartCost}
+                                totalCartCost={this.getTotalCartCost()}
                             />
                         }
                     />

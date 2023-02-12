@@ -5,6 +5,7 @@ import "./CartSummary.scss";
 class CartSummary extends PureComponent {
     
     render(){
+        
         const tax = (this.props.totalCartCost * 0.21).toFixed(2);
         const itemsQuantity = this.props.cartElements.map(cartEl => cartEl.quantity).reduce((acc, cur) => acc + cur, 0)
 
