@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import allActions from "../../actions";
 import MiniCartElement from "../MiniCartElement/MiniCartElement";
-import MiniCartTotalCost from "../MiniCortTotalCost/MiniCartTotalCost";
+import MiniCartTotalCost from "../MiniCartTotalCost/MiniCartTotalCost";
 import './MiniCart.scss';
 
 class MiniCart extends PureComponent {

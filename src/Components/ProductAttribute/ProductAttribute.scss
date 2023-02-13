@@ -9,7 +9,11 @@
 
     h3 {
         text-transform: uppercase;
-        font-weight: bold;
+        font-family: variables.$ff-RobotoCondensed;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
     }
 
     .product-attribute__all-options {

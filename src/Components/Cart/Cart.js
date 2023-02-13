@@ -46,7 +46,9 @@ class Cart extends PureComponent {
                             ORDER
                         </Link>
                     </>
+
                     :
+                    
                     <p className="cart__no-items">There is no products in cart</p>
                 }
 
