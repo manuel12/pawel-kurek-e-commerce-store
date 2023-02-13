@@ -21,6 +21,7 @@ class ProductAllAttributes extends PureComponent {
                     key={attribute.id}
                     attribute={attribute}
                     size={this.props.size}
+                    type={attribute.type}
                     productAttributesStates={this.props.productAttributesStates}
                     changeProductAttributesStates={this.changeProductAttributesStates}
                     areAttrsEditable={this.areAttrsEditable}
